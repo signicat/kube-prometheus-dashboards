@@ -19,7 +19,7 @@ metadata:
     app: {{ template "kube-prometheus-stack.name" $ }}-grafana
 {{ include "kube-prometheus-stack.labels" $ | indent 4 }}
 data:
-  grafana-overview.json: |-
+  grafana-overview-v2.json: |-
     {{`{
             "annotations": {
                "list": [
@@ -96,7 +96,6 @@ data:
                      {
                         "expr": "grafana_alerting_result_total{job=~\"$job\", instance=~\"$instance\", state=\"alerting\"}",
                         "instant": true,
-                        "interval": "",
                         "legendFormat": "",
                         "refId": "A"
                      }
@@ -153,7 +152,6 @@ data:
                   "targets": [
                      {
                         "expr": "sum(grafana_stat_totals_dashboard{job=~\"$job\", instance=~\"$instance\"})",
-                        "interval": "",
                         "legendFormat": "",
                         "refId": "A"
                      }
@@ -203,7 +201,6 @@ data:
                      {
                         "expr": "grafana_build_info{job=~\"$job\", instance=~\"$instance\"}",
                         "instant": true,
-                        "interval": "",
                         "legendFormat": "",
                         "refId": "A"
                      }
@@ -298,7 +295,6 @@ data:
                   "targets": [
                      {
                         "expr": "sum by (status_code) (irate(grafana_http_request_duration_seconds_count{job=~\"$job\", instance=~\"$instance\"}[1m])) ",
-                        "interval": "",
                         "legendFormat": "{{status_code}}",
                         "refId": "A"
                      }
@@ -396,21 +392,18 @@ data:
                      {
                         "exemplar": true,
                         "expr": "histogram_quantile(0.99, sum(irate(grafana_http_request_duration_seconds_bucket{instance=~\"$instance\", job=~\"$job\"}[$__rate_interval])) by (le)) * 1",
-                        "interval": "",
                         "legendFormat": "99th Percentile",
                         "refId": "A"
                      },
                      {
                         "exemplar": true,
                         "expr": "histogram_quantile(0.50, sum(irate(grafana_http_request_duration_seconds_bucket{instance=~\"$instance\", job=~\"$job\"}[$__rate_interval])) by (le)) * 1",
-                        "interval": "",
                         "legendFormat": "50th Percentile",
                         "refId": "B"
                      },
                      {
                         "exemplar": true,
                         "expr": "sum(irate(grafana_http_request_duration_seconds_sum{instance=~\"$instance\", job=~\"$job\"}[$__rate_interval])) * 1 / sum(irate(grafana_http_request_duration_seconds_count{instance=~\"$instance\", job=~\"$job\"}[$__rate_interval]))",
-                        "interval": "",
                         "legendFormat": "Average",
                         "refId": "C"
                      }
@@ -461,7 +454,7 @@ data:
             ],
             "schemaVersion": 30,
             "style": "dark",
-            "tags": [],
+            "tags": [`}}{{ .Values.grafana.overrideDefaultDashboardTag | default "" }}{{`],
             "templating": {
                "list": [
                   {
@@ -570,7 +563,7 @@ data:
             },
             "timezone": "`}}{{ .Values.grafana.defaultDashboardsTimezone }}{{`",
             "title": "Grafana Overview",
-            "uid": "6be0s85Mk",
+            "uid": "6be0s85Mk-v2",
             "version": 2
          }`}}
 {{- end }}

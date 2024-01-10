@@ -940,6 +940,8 @@ grafana:
   ##
   defaultDashboardsEnabled: true
 
+  # Disable deployment of specific dashboards.
+  # PS: This is only relevant for the forked kube-prometheus-dashboard charts
   defaultDashboardsDisabled:
     alertmanagerOverview: false
     apiserver: false
@@ -974,6 +976,10 @@ grafana:
     proxy: false
     scheduler: false
     workloadTotal: false
+
+  # Override tag for the default dashboards:
+  # PS: This is only relevant for the forked kube-prometheus-dashboard charts
+  # overrideDefaultDashboardTag: kube-prom-dash
 
   ## Timezone for the default dashboards
   ## Other options are: browser or a specific timezone, i.e. Europe/Luxembourg

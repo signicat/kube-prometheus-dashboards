@@ -19,7 +19,7 @@ metadata:
     app: {{ template "kube-prometheus-stack.name" $ }}-grafana
 {{ include "kube-prometheus-stack.labels" $ | indent 4 }}
 data:
-  k8s-resources-multicluster.json: |-
+  k8s-resources-multicluster-v2.json: |-
     {{`{
             "annotations": {
                "list": []
@@ -44,7 +44,6 @@ data:
                         "fill": 1,
                         "format": "percentunit",
                         "id": 1,
-                        "interval": "1m",
                         "legend": {
                            "alignAsTable": true,
                            "avg": false,
@@ -122,7 +121,6 @@ data:
                         "fill": 1,
                         "format": "percentunit",
                         "id": 2,
-                        "interval": "1m",
                         "legend": {
                            "alignAsTable": true,
                            "avg": false,
@@ -200,7 +198,6 @@ data:
                         "fill": 1,
                         "format": "percentunit",
                         "id": 3,
-                        "interval": "1m",
                         "legend": {
                            "alignAsTable": true,
                            "avg": false,
@@ -278,7 +275,6 @@ data:
                         "fill": 1,
                         "format": "percentunit",
                         "id": 4,
-                        "interval": "1m",
                         "legend": {
                            "alignAsTable": true,
                            "avg": false,
@@ -356,7 +352,6 @@ data:
                         "fill": 1,
                         "format": "percentunit",
                         "id": 5,
-                        "interval": "1m",
                         "legend": {
                            "alignAsTable": true,
                            "avg": false,
@@ -434,7 +429,6 @@ data:
                         "fill": 1,
                         "format": "percentunit",
                         "id": 6,
-                        "interval": "1m",
                         "legend": {
                            "alignAsTable": true,
                            "avg": false,
@@ -523,7 +517,6 @@ data:
                         "datasource": "$datasource",
                         "fill": 0,
                         "id": 7,
-                        "interval": "1m",
                         "legend": {
                            "alignAsTable": true,
                            "avg": false,
@@ -612,7 +605,6 @@ data:
                         "datasource": "$datasource",
                         "fill": 1,
                         "id": 8,
-                        "interval": "1m",
                         "legend": {
                            "alignAsTable": true,
                            "avg": false,
@@ -840,7 +832,6 @@ data:
                         "datasource": "$datasource",
                         "fill": 0,
                         "id": 9,
-                        "interval": "1m",
                         "legend": {
                            "alignAsTable": true,
                            "avg": false,
@@ -929,7 +920,6 @@ data:
                         "datasource": "$datasource",
                         "fill": 1,
                         "id": 10,
-                        "interval": "1m",
                         "legend": {
                            "alignAsTable": true,
                            "avg": false,
@@ -1148,9 +1138,7 @@ data:
             ],
             "schemaVersion": 14,
             "style": "dark",
-            "tags": [
-               "kubernetes-mixin"
-            ],
+            "tags": [`}}{{ .Values.grafana.overrideDefaultDashboardTag | default "kubernetes-mixin" | quote }}{{`],
             "templating": {
                "list": [
                   {
@@ -1199,8 +1187,8 @@ data:
                ]
             },
             "timezone": "`}}{{ .Values.grafana.defaultDashboardsTimezone }}{{`",
-            "title": "Kubernetes / Compute Resources /  Multi-Cluster",
-            "uid": "b59e6c9f2fcbe2e16d77fc492374cc4f",
+            "title": "K8s / Compute / Multi-Cluster",
+            "uid": "b59e6c9f2fcbe2e16d77fc492374cc4f-v2",
             "version": 0
          }`}}
 {{- end }}

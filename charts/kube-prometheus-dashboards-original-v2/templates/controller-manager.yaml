@@ -19,7 +19,7 @@ metadata:
     app: {{ template "kube-prometheus-stack.name" $ }}-grafana
 {{ include "kube-prometheus-stack.labels" $ | indent 4 }}
 data:
-  controller-manager.json: |-
+  controller-manager-v2.json: |-
     {{`{
             "__inputs": [],
             "__requires": [],
@@ -58,7 +58,6 @@ data:
                         },
                         "gridPos": {},
                         "id": 2,
-                        "interval": "1m",
                         "legend": {
                            "alignAsTable": true,
                            "rightSide": true
@@ -101,7 +100,6 @@ data:
                            {
                               "expr": "sum(up{cluster=\"$cluster\", job=\"kube-controller-manager\"})",
                               "format": "time_series",
-                              "intervalFactor": 2,
                               "legendFormat": "",
                               "refId": "A"
                            }
@@ -132,7 +130,6 @@ data:
                         "fillGradient": 0,
                         "gridPos": {},
                         "id": 3,
-                        "interval": "1m",
                         "legend": {
                            "alignAsTable": true,
                            "avg": false,
@@ -163,7 +160,6 @@ data:
                            {
                               "expr": "sum(rate(workqueue_adds_total{cluster=\"$cluster\", job=\"kube-controller-manager\", instance=~\"$instance\"}[$__rate_interval])) by (cluster, instance, name)",
                               "format": "time_series",
-                              "intervalFactor": 2,
                               "legendFormat": "{{cluster}} {{instance}} {{name}}",
                               "refId": "A"
                            }
@@ -227,7 +223,6 @@ data:
                         "fillGradient": 0,
                         "gridPos": {},
                         "id": 4,
-                        "interval": "1m",
                         "legend": {
                            "alignAsTable": true,
                            "avg": false,
@@ -258,7 +253,6 @@ data:
                            {
                               "expr": "sum(rate(workqueue_depth{cluster=\"$cluster\", job=\"kube-controller-manager\", instance=~\"$instance\"}[$__rate_interval])) by (cluster, instance, name)",
                               "format": "time_series",
-                              "intervalFactor": 2,
                               "legendFormat": "{{cluster}} {{instance}} {{name}}",
                               "refId": "A"
                            }
@@ -322,7 +316,6 @@ data:
                         "fillGradient": 0,
                         "gridPos": {},
                         "id": 5,
-                        "interval": "1m",
                         "legend": {
                            "alignAsTable": true,
                            "avg": false,
@@ -353,7 +346,6 @@ data:
                            {
                               "expr": "histogram_quantile(0.99, sum(rate(workqueue_queue_duration_seconds_bucket{cluster=\"$cluster\", job=\"kube-controller-manager\", instance=~\"$instance\"}[$__rate_interval])) by (cluster, instance, name, le))",
                               "format": "time_series",
-                              "intervalFactor": 2,
                               "legendFormat": "{{cluster}} {{instance}} {{name}}",
                               "refId": "A"
                            }
@@ -417,7 +409,6 @@ data:
                         "fillGradient": 0,
                         "gridPos": {},
                         "id": 6,
-                        "interval": "1m",
                         "legend": {
                            "alignAsTable": true,
                            "avg": false,
@@ -448,28 +439,24 @@ data:
                            {
                               "expr": "sum(rate(rest_client_requests_total{job=\"kube-controller-manager\", instance=~\"$instance\",code=~\"2..\"}[$__rate_interval]))",
                               "format": "time_series",
-                              "intervalFactor": 2,
                               "legendFormat": "2xx",
                               "refId": "A"
                            },
                            {
                               "expr": "sum(rate(rest_client_requests_total{job=\"kube-controller-manager\", instance=~\"$instance\",code=~\"3..\"}[$__rate_interval]))",
                               "format": "time_series",
-                              "intervalFactor": 2,
                               "legendFormat": "3xx",
                               "refId": "B"
                            },
                            {
                               "expr": "sum(rate(rest_client_requests_total{job=\"kube-controller-manager\", instance=~\"$instance\",code=~\"4..\"}[$__rate_interval]))",
                               "format": "time_series",
-                              "intervalFactor": 2,
                               "legendFormat": "4xx",
                               "refId": "C"
                            },
                            {
                               "expr": "sum(rate(rest_client_requests_total{job=\"kube-controller-manager\", instance=~\"$instance\",code=~\"5..\"}[$__rate_interval]))",
                               "format": "time_series",
-                              "intervalFactor": 2,
                               "legendFormat": "5xx",
                               "refId": "D"
                            }
@@ -520,7 +507,6 @@ data:
                         "fillGradient": 0,
                         "gridPos": {},
                         "id": 7,
-                        "interval": "1m",
                         "legend": {
                            "alignAsTable": true,
                            "avg": false,
@@ -551,7 +537,6 @@ data:
                            {
                               "expr": "histogram_quantile(0.99, sum(rate(rest_client_request_duration_seconds_bucket{cluster=\"$cluster\", job=\"kube-controller-manager\", instance=~\"$instance\", verb=\"POST\"}[$__rate_interval])) by (verb, url, le))",
                               "format": "time_series",
-                              "intervalFactor": 2,
                               "legendFormat": "{{verb}} {{url}}",
                               "refId": "A"
                            }
@@ -615,7 +600,6 @@ data:
                         "fillGradient": 0,
                         "gridPos": {},
                         "id": 8,
-                        "interval": "1m",
                         "legend": {
                            "alignAsTable": true,
                            "avg": false,
@@ -646,7 +630,6 @@ data:
                            {
                               "expr": "histogram_quantile(0.99, sum(rate(rest_client_request_duration_seconds_bucket{cluster=\"$cluster\", job=\"kube-controller-manager\", instance=~\"$instance\", verb=\"GET\"}[$__rate_interval])) by (verb, url, le))",
                               "format": "time_series",
-                              "intervalFactor": 2,
                               "legendFormat": "{{verb}} {{url}}",
                               "refId": "A"
                            }
@@ -710,7 +693,6 @@ data:
                         "fillGradient": 0,
                         "gridPos": {},
                         "id": 9,
-                        "interval": "1m",
                         "legend": {
                            "alignAsTable": true,
                            "avg": false,
@@ -741,7 +723,6 @@ data:
                            {
                               "expr": "process_resident_memory_bytes{cluster=\"$cluster\", job=\"kube-controller-manager\",instance=~\"$instance\"}",
                               "format": "time_series",
-                              "intervalFactor": 2,
                               "legendFormat": "{{instance}}",
                               "refId": "A"
                            }
@@ -792,7 +773,6 @@ data:
                         "fillGradient": 0,
                         "gridPos": {},
                         "id": 10,
-                        "interval": "1m",
                         "legend": {
                            "alignAsTable": true,
                            "avg": false,
@@ -823,7 +803,6 @@ data:
                            {
                               "expr": "rate(process_cpu_seconds_total{cluster=\"$cluster\", job=\"kube-controller-manager\",instance=~\"$instance\"}[$__rate_interval])",
                               "format": "time_series",
-                              "intervalFactor": 2,
                               "legendFormat": "{{instance}}",
                               "refId": "A"
                            }
@@ -874,7 +853,6 @@ data:
                         "fillGradient": 0,
                         "gridPos": {},
                         "id": 11,
-                        "interval": "1m",
                         "legend": {
                            "alignAsTable": true,
                            "avg": false,
@@ -905,7 +883,6 @@ data:
                            {
                               "expr": "go_goroutines{cluster=\"$cluster\", job=\"kube-controller-manager\",instance=~\"$instance\"}",
                               "format": "time_series",
-                              "intervalFactor": 2,
                               "legendFormat": "{{instance}}",
                               "refId": "A"
                            }
@@ -958,9 +935,7 @@ data:
             ],
             "schemaVersion": 14,
             "style": "dark",
-            "tags": [
-               "kubernetes-mixin"
-            ],
+            "tags": [`}}{{ .Values.grafana.overrideDefaultDashboardTag | default "kubernetes-mixin" | quote }}{{`],
             "templating": {
                "list": [
                   {
@@ -1050,8 +1025,8 @@ data:
                ]
             },
             "timezone": "`}}{{ .Values.grafana.defaultDashboardsTimezone }}{{`",
-            "title": "Kubernetes / Controller Manager",
-            "uid": "72e0e05bef5099e5f049b05fdc429ed4",
+            "title": "K8s / Controller Manager",
+            "uid": "72e0e05bef5099e5f049b05fdc429ed4-v2",
             "version": 0
          }`}}
 {{- end }}

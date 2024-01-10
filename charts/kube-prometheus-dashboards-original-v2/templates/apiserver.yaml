@@ -19,7 +19,7 @@ metadata:
     app: {{ template "kube-prometheus-stack.name" $ }}-grafana
 {{ include "kube-prometheus-stack.labels" $ | indent 4 }}
 data:
-  apiserver.json: |-
+  apiserver-v2.json: |-
     {{`{
             "__inputs": [],
             "__requires": [],
@@ -78,7 +78,6 @@ data:
                         },
                         "gridPos": {},
                         "id": 3,
-                        "interval": "1m",
                         "legend": {
                            "alignAsTable": true,
                            "rightSide": true
@@ -121,7 +120,6 @@ data:
                            {
                               "expr": "apiserver_request:availability30d{verb=\"all\", cluster=\"$cluster\"}",
                               "format": "time_series",
-                              "intervalFactor": 2,
                               "legendFormat": "",
                               "refId": "A"
                            }
@@ -154,7 +152,6 @@ data:
                         "fillGradient": 0,
                         "gridPos": {},
                         "id": 4,
-                        "interval": "1m",
                         "legend": {
                            "alignAsTable": true,
                            "avg": false,
@@ -185,7 +182,6 @@ data:
                            {
                               "expr": "100 * (apiserver_request:availability30d{verb=\"all\", cluster=\"$cluster\"} - 0.990000)",
                               "format": "time_series",
-                              "intervalFactor": 2,
                               "legendFormat": "errorbudget",
                               "refId": "A"
                            }
@@ -263,7 +259,6 @@ data:
                         },
                         "gridPos": {},
                         "id": 5,
-                        "interval": "1m",
                         "legend": {
                            "alignAsTable": true,
                            "rightSide": true
@@ -306,7 +301,6 @@ data:
                            {
                               "expr": "apiserver_request:availability30d{verb=\"read\", cluster=\"$cluster\"}",
                               "format": "time_series",
-                              "intervalFactor": 2,
                               "legendFormat": "",
                               "refId": "A"
                            }
@@ -338,7 +332,6 @@ data:
                         "fillGradient": 0,
                         "gridPos": {},
                         "id": 6,
-                        "interval": "1m",
                         "legend": {
                            "alignAsTable": true,
                            "avg": false,
@@ -386,7 +379,6 @@ data:
                            {
                               "expr": "sum by (code) (code_resource:apiserver_request_total:rate5m{verb=\"read\", cluster=\"$cluster\"})",
                               "format": "time_series",
-                              "intervalFactor": 2,
                               "legendFormat": "{{ code }}",
                               "refId": "A"
                            }
@@ -438,7 +430,6 @@ data:
                         "fillGradient": 0,
                         "gridPos": {},
                         "id": 7,
-                        "interval": "1m",
                         "legend": {
                            "alignAsTable": true,
                            "avg": false,
@@ -469,7 +460,6 @@ data:
                            {
                               "expr": "sum by (resource) (code_resource:apiserver_request_total:rate5m{verb=\"read\",code=~\"5..\", cluster=\"$cluster\"}) / sum by (resource) (code_resource:apiserver_request_total:rate5m{verb=\"read\", cluster=\"$cluster\"})",
                               "format": "time_series",
-                              "intervalFactor": 2,
                               "legendFormat": "{{ resource }}",
                               "refId": "A"
                            }
@@ -521,7 +511,6 @@ data:
                         "fillGradient": 0,
                         "gridPos": {},
                         "id": 8,
-                        "interval": "1m",
                         "legend": {
                            "alignAsTable": true,
                            "avg": false,
@@ -552,7 +541,6 @@ data:
                            {
                               "expr": "cluster_quantile:apiserver_request_sli_duration_seconds:histogram_quantile{verb=\"read\", cluster=\"$cluster\"}",
                               "format": "time_series",
-                              "intervalFactor": 2,
                               "legendFormat": "{{ resource }}",
                               "refId": "A"
                            }
@@ -628,7 +616,6 @@ data:
                         },
                         "gridPos": {},
                         "id": 9,
-                        "interval": "1m",
                         "legend": {
                            "alignAsTable": true,
                            "rightSide": true
@@ -671,7 +658,6 @@ data:
                            {
                               "expr": "apiserver_request:availability30d{verb=\"write\", cluster=\"$cluster\"}",
                               "format": "time_series",
-                              "intervalFactor": 2,
                               "legendFormat": "",
                               "refId": "A"
                            }
@@ -703,7 +689,6 @@ data:
                         "fillGradient": 0,
                         "gridPos": {},
                         "id": 10,
-                        "interval": "1m",
                         "legend": {
                            "alignAsTable": true,
                            "avg": false,
@@ -751,7 +736,6 @@ data:
                            {
                               "expr": "sum by (code) (code_resource:apiserver_request_total:rate5m{verb=\"write\", cluster=\"$cluster\"})",
                               "format": "time_series",
-                              "intervalFactor": 2,
                               "legendFormat": "{{ code }}",
                               "refId": "A"
                            }
@@ -803,7 +787,6 @@ data:
                         "fillGradient": 0,
                         "gridPos": {},
                         "id": 11,
-                        "interval": "1m",
                         "legend": {
                            "alignAsTable": true,
                            "avg": false,
@@ -834,7 +817,6 @@ data:
                            {
                               "expr": "sum by (resource) (code_resource:apiserver_request_total:rate5m{verb=\"write\",code=~\"5..\", cluster=\"$cluster\"}) / sum by (resource) (code_resource:apiserver_request_total:rate5m{verb=\"write\", cluster=\"$cluster\"})",
                               "format": "time_series",
-                              "intervalFactor": 2,
                               "legendFormat": "{{ resource }}",
                               "refId": "A"
                            }
@@ -886,7 +868,6 @@ data:
                         "fillGradient": 0,
                         "gridPos": {},
                         "id": 12,
-                        "interval": "1m",
                         "legend": {
                            "alignAsTable": true,
                            "avg": false,
@@ -917,7 +898,6 @@ data:
                            {
                               "expr": "cluster_quantile:apiserver_request_sli_duration_seconds:histogram_quantile{verb=\"write\", cluster=\"$cluster\"}",
                               "format": "time_series",
-                              "intervalFactor": 2,
                               "legendFormat": "{{ resource }}",
                               "refId": "A"
                            }
@@ -981,7 +961,6 @@ data:
                         "fillGradient": 0,
                         "gridPos": {},
                         "id": 13,
-                        "interval": "1m",
                         "legend": {
                            "alignAsTable": true,
                            "avg": false,
@@ -1012,7 +991,6 @@ data:
                            {
                               "expr": "sum(rate(workqueue_adds_total{job=\"apiserver\", instance=~\"$instance\", cluster=\"$cluster\"}[$__rate_interval])) by (instance, name)",
                               "format": "time_series",
-                              "intervalFactor": 2,
                               "legendFormat": "{{instance}} {{name}}",
                               "refId": "A"
                            }
@@ -1063,7 +1041,6 @@ data:
                         "fillGradient": 0,
                         "gridPos": {},
                         "id": 14,
-                        "interval": "1m",
                         "legend": {
                            "alignAsTable": true,
                            "avg": false,
@@ -1094,7 +1071,6 @@ data:
                            {
                               "expr": "sum(rate(workqueue_depth{job=\"apiserver\", instance=~\"$instance\", cluster=\"$cluster\"}[$__rate_interval])) by (instance, name)",
                               "format": "time_series",
-                              "intervalFactor": 2,
                               "legendFormat": "{{instance}} {{name}}",
                               "refId": "A"
                            }
@@ -1145,7 +1121,6 @@ data:
                         "fillGradient": 0,
                         "gridPos": {},
                         "id": 15,
-                        "interval": "1m",
                         "legend": {
                            "alignAsTable": true,
                            "avg": false,
@@ -1176,7 +1151,6 @@ data:
                            {
                               "expr": "histogram_quantile(0.99, sum(rate(workqueue_queue_duration_seconds_bucket{job=\"apiserver\", instance=~\"$instance\", cluster=\"$cluster\"}[$__rate_interval])) by (instance, name, le))",
                               "format": "time_series",
-                              "intervalFactor": 2,
                               "legendFormat": "{{instance}} {{name}}",
                               "refId": "A"
                            }
@@ -1240,7 +1214,6 @@ data:
                         "fillGradient": 0,
                         "gridPos": {},
                         "id": 16,
-                        "interval": "1m",
                         "legend": {
                            "alignAsTable": true,
                            "avg": false,
@@ -1271,7 +1244,6 @@ data:
                            {
                               "expr": "process_resident_memory_bytes{job=\"apiserver\",instance=~\"$instance\", cluster=\"$cluster\"}",
                               "format": "time_series",
-                              "intervalFactor": 2,
                               "legendFormat": "{{instance}}",
                               "refId": "A"
                            }
@@ -1322,7 +1294,6 @@ data:
                         "fillGradient": 0,
                         "gridPos": {},
                         "id": 17,
-                        "interval": "1m",
                         "legend": {
                            "alignAsTable": true,
                            "avg": false,
@@ -1353,7 +1324,6 @@ data:
                            {
                               "expr": "rate(process_cpu_seconds_total{job=\"apiserver\",instance=~\"$instance\", cluster=\"$cluster\"}[$__rate_interval])",
                               "format": "time_series",
-                              "intervalFactor": 2,
                               "legendFormat": "{{instance}}",
                               "refId": "A"
                            }
@@ -1404,7 +1374,6 @@ data:
                         "fillGradient": 0,
                         "gridPos": {},
                         "id": 18,
-                        "interval": "1m",
                         "legend": {
                            "alignAsTable": true,
                            "avg": false,
@@ -1435,7 +1404,6 @@ data:
                            {
                               "expr": "go_goroutines{job=\"apiserver\",instance=~\"$instance\", cluster=\"$cluster\"}",
                               "format": "time_series",
-                              "intervalFactor": 2,
                               "legendFormat": "{{instance}}",
                               "refId": "A"
                            }
@@ -1488,9 +1456,7 @@ data:
             ],
             "schemaVersion": 14,
             "style": "dark",
-            "tags": [
-               "kubernetes-mixin"
-            ],
+            "tags": [`}}{{ .Values.grafana.overrideDefaultDashboardTag | default "kubernetes-mixin" | quote }}{{`],
             "templating": {
                "list": [
                   {
@@ -1580,8 +1546,8 @@ data:
                ]
             },
             "timezone": "`}}{{ .Values.grafana.defaultDashboardsTimezone }}{{`",
-            "title": "Kubernetes / API server",
-            "uid": "09ec8aa1e996d6ffcd6817bbaff4db1b",
+            "title": "K8s / API server",
+            "uid": "09ec8aa1e996d6ffcd6817bbaff4db1b-v2",
             "version": 0
          }`}}
 {{- end }}

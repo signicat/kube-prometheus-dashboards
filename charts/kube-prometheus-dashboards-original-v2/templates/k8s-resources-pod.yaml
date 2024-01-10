@@ -19,7 +19,7 @@ metadata:
     app: {{ template "kube-prometheus-stack.name" $ }}-grafana
 {{ include "kube-prometheus-stack.labels" $ | indent 4 }}
 data:
-  k8s-resources-pod.json: |-
+  k8s-resources-pod-v2.json: |-
     {{`{
                 "annotations": {
                     "list": []
@@ -43,7 +43,6 @@ data:
                                 "datasource": "$datasource",
                                 "fill": 10,
                                 "id": 1,
-                                "interval": "1m",
                                 "legend": {
                                     "alignAsTable": true,
                                     "avg": false,
@@ -163,7 +162,6 @@ data:
                                 "datasource": "$datasource",
                                 "fill": 10,
                                 "id": 2,
-                                "interval": "1m",
                                 "legend": {
                                     "alignAsTable": true,
                                     "avg": false,
@@ -261,7 +259,6 @@ data:
                                 "datasource": "$datasource",
                                 "fill": 1,
                                 "id": 3,
-                                "interval": "1m",
                                 "legend": {
                                     "alignAsTable": true,
                                     "avg": false,
@@ -489,7 +486,6 @@ data:
                                 "datasource": "$datasource",
                                 "fill": 10,
                                 "id": 4,
-                                "interval": "1m",
                                 "legend": {
                                     "alignAsTable": true,
                                     "avg": false,
@@ -611,7 +607,6 @@ data:
                                 "datasource": "$datasource",
                                 "fill": 1,
                                 "id": 5,
-                                "interval": "1m",
                                 "legend": {
                                     "alignAsTable": true,
                                     "avg": false,
@@ -905,7 +900,6 @@ data:
                                 "datasource": "$datasource",
                                 "fill": 10,
                                 "id": 6,
-                                "interval": "1m",
                                 "legend": {
                                     "alignAsTable": true,
                                     "avg": false,
@@ -982,7 +976,6 @@ data:
                                 "datasource": "$datasource",
                                 "fill": 10,
                                 "id": 7,
-                                "interval": "1m",
                                 "legend": {
                                     "alignAsTable": true,
                                     "avg": false,
@@ -1071,7 +1064,6 @@ data:
                                 "datasource": "$datasource",
                                 "fill": 10,
                                 "id": 8,
-                                "interval": "1m",
                                 "legend": {
                                     "alignAsTable": true,
                                     "avg": false,
@@ -1148,7 +1140,6 @@ data:
                                 "datasource": "$datasource",
                                 "fill": 10,
                                 "id": 9,
-                                "interval": "1m",
                                 "legend": {
                                     "alignAsTable": true,
                                     "avg": false,
@@ -1237,7 +1228,6 @@ data:
                                 "datasource": "$datasource",
                                 "fill": 10,
                                 "id": 10,
-                                "interval": "1m",
                                 "legend": {
                                     "alignAsTable": true,
                                     "avg": false,
@@ -1314,7 +1304,6 @@ data:
                                 "datasource": "$datasource",
                                 "fill": 10,
                                 "id": 11,
-                                "interval": "1m",
                                 "legend": {
                                     "alignAsTable": true,
                                     "avg": false,
@@ -1404,7 +1393,6 @@ data:
                                 "decimals": null,
                                 "fill": 10,
                                 "id": 12,
-                                "interval": "1m",
                                 "legend": {
                                     "alignAsTable": true,
                                     "avg": false,
@@ -1487,7 +1475,6 @@ data:
                                 "datasource": "$datasource",
                                 "fill": 10,
                                 "id": 13,
-                                "interval": "1m",
                                 "legend": {
                                     "alignAsTable": true,
                                     "avg": false,
@@ -1583,7 +1570,6 @@ data:
                                 "decimals": null,
                                 "fill": 10,
                                 "id": 14,
-                                "interval": "1m",
                                 "legend": {
                                     "alignAsTable": true,
                                     "avg": false,
@@ -1660,7 +1646,6 @@ data:
                                 "datasource": "$datasource",
                                 "fill": 10,
                                 "id": 15,
-                                "interval": "1m",
                                 "legend": {
                                     "alignAsTable": true,
                                     "avg": false,
@@ -1749,7 +1734,6 @@ data:
                                 "datasource": "$datasource",
                                 "fill": 1,
                                 "id": 16,
-                                "interval": "1m",
                                 "legend": {
                                     "alignAsTable": true,
                                     "avg": false,
@@ -1994,9 +1978,7 @@ data:
                 ],
                 "schemaVersion": 14,
                 "style": "dark",
-                "tags": [
-                    "kubernetes-mixin"
-                ],
+                "tags": [`}}{{ .Values.grafana.overrideDefaultDashboardTag | default "kubernetes-mixin" | quote }}{{`],
                 "templating": {
                     "list": [
                         {
@@ -2114,8 +2096,8 @@ data:
                     ]
                 },
                 "timezone": "`}}{{ .Values.grafana.defaultDashboardsTimezone }}{{`",
-                "title": "Kubernetes / Compute Resources / Pod (Stian sin test)",
-                "uid": "6581e46e4e5c7ba40a07646395ef7b23",
+                "title": "K8s / Compute / Pod",
+                "uid": "6581e46e4e5c7ba40a07646395ef7b23-v2",
                 "version": 0
             }`}}
 {{- end }}

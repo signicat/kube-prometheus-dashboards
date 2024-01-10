@@ -19,7 +19,7 @@ metadata:
     app: {{ template "kube-prometheus-stack.name" $ }}-grafana
 {{ include "kube-prometheus-stack.labels" $ | indent 4 }}
 data:
-  etcd.json: |-
+  etcd-v2.json: |-
     {{`{
             "description": "etcd sample Grafana dashboard with Prometheus",
             "panels": [
@@ -35,7 +35,6 @@ data:
                      "y": 0
                   },
                   "id": 1,
-                  "interval": "1m",
                   "options": {
                      "colorMode": "none",
                      "graphMode": "none",
@@ -81,7 +80,6 @@ data:
                      "y": 0
                   },
                   "id": 2,
-                  "interval": "1m",
                   "pluginVersion": "v10.0.0",
                   "targets": [
                      {
@@ -125,7 +123,6 @@ data:
                      "y": 0
                   },
                   "id": 3,
-                  "interval": "1m",
                   "pluginVersion": "v10.0.0",
                   "targets": [
                      {
@@ -170,7 +167,6 @@ data:
                      "y": 25
                   },
                   "id": 4,
-                  "interval": "1m",
                   "pluginVersion": "v10.0.0",
                   "targets": [
                      {
@@ -207,7 +203,6 @@ data:
                      "y": 25
                   },
                   "id": 5,
-                  "interval": "1m",
                   "pluginVersion": "v10.0.0",
                   "targets": [
                      {
@@ -252,7 +247,6 @@ data:
                      "y": 25
                   },
                   "id": 6,
-                  "interval": "1m",
                   "pluginVersion": "v10.0.0",
                   "targets": [
                      {
@@ -289,7 +283,6 @@ data:
                      "y": 50
                   },
                   "id": 7,
-                  "interval": "1m",
                   "pluginVersion": "v10.0.0",
                   "targets": [
                      {
@@ -326,7 +319,6 @@ data:
                      "y": 50
                   },
                   "id": 8,
-                  "interval": "1m",
                   "pluginVersion": "v10.0.0",
                   "targets": [
                      {
@@ -363,7 +355,6 @@ data:
                      "y": 50
                   },
                   "id": 9,
-                  "interval": "1m",
                   "pluginVersion": "v10.0.0",
                   "targets": [
                      {
@@ -400,7 +391,6 @@ data:
                      "y": 50
                   },
                   "id": 10,
-                  "interval": "1m",
                   "pluginVersion": "v10.0.0",
                   "targets": [
                      {
@@ -436,7 +426,6 @@ data:
                      "y": 75
                   },
                   "id": 11,
-                  "interval": "1m",
                   "pluginVersion": "v10.0.0",
                   "targets": [
                      {
@@ -472,7 +461,6 @@ data:
                      "y": 75
                   },
                   "id": 12,
-                  "interval": "1m",
                   "pluginVersion": "v10.0.0",
                   "targets": [
                      {
@@ -509,7 +497,6 @@ data:
                      "y": 75
                   },
                   "id": 13,
-                  "interval": "1m",
                   "pluginVersion": "v10.0.0",
                   "targets": [
                      {
@@ -527,9 +514,7 @@ data:
             ],
             "refresh": "10s",
             "schemaVersion": 36,
-            "tags": [
-               "etcd-mixin"
-            ],
+            "tags": [`}}{{ .Values.grafana.overrideDefaultDashboardTag | default "etcd-mixin" | quote }}{{`],
             "templating": {
                "list": [
                   {
@@ -558,6 +543,6 @@ data:
             },
             "timezone": "`}}{{ .Values.grafana.defaultDashboardsTimezone }}{{`",
             "title": "etcd",
-            "uid": "c2f4e12cdf69feb95caa41a5a1b423d9"
+            "uid": "c2f4e12cdf69feb95caa41a5a1b423d9-v2"
          }`}}
 {{- end }}
