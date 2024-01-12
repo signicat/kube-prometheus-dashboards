@@ -3,6 +3,19 @@ entries:
   kube-prometheus-dashboards-original:
   - apiVersion: v2
     appVersion: 55.5.0
+    created: "2024-01-12T12:32:26.987269912Z"
+    description: Flexible helm install of kube-prometheus-stack dashboards
+    digest: e54bbdfce7c9d6a899bb98d0b223a0148cb72f0e89a78011b21ab5658fc95d5e
+    maintainers:
+    - email: stian.ovrevage@signicat.com
+      name: StianOvrevage
+    name: kube-prometheus-dashboards-original
+    type: application
+    urls:
+    - https://github.com/signicat/kube-prometheus-dashboards/releases/download/kube-prometheus-dashboards-original-1.0.3/kube-prometheus-dashboards-original-1.0.3.tgz
+    version: 1.0.3
+  - apiVersion: v2
+    appVersion: 55.5.0
     created: "2024-01-12T10:51:29.978773847Z"
     description: Flexible helm install of kube-prometheus-stack dashboards
     digest: 2af2d9c820f20a380f6c1fd7029760223f25ef4683d31be56d27478904e8c129
@@ -25,6 +38,20 @@ entries:
     - https://github.com/signicat/kube-prometheus-dashboards/releases/download/kube-prometheus-dashboards-original-1.0.1/kube-prometheus-dashboards-original-1.0.1.tgz
     version: 1.0.1
   kube-prometheus-dashboards-original-v2:
+  - apiVersion: v2
+    appVersion: 55.5.0
+    created: "2024-01-12T12:32:27.145115831Z"
+    description: Flexible helm install of kube-prometheus-stack dashboards with a
+      few improvements
+    digest: 13bdc666f4f870df7ea37b17c31fc563b83a40ac0b83d14965f3cf2eca4eef5e
+    maintainers:
+    - email: stian.ovrevage@signicat.com
+      name: StianOvrevage
+    name: kube-prometheus-dashboards-original-v2
+    type: application
+    urls:
+    - https://github.com/signicat/kube-prometheus-dashboards/releases/download/kube-prometheus-dashboards-original-v2-1.0.3/kube-prometheus-dashboards-original-v2-1.0.3.tgz
+    version: 1.0.3
   - apiVersion: v2
     appVersion: 55.5.0
     created: "2024-01-12T10:51:30.205756006Z"
@@ -50,4 +77,4 @@ entries:
     urls:
     - https://github.com/signicat/kube-prometheus-dashboards/releases/download/kube-prometheus-dashboards-original-v2-1.0.1/kube-prometheus-dashboards-original-v2-1.0.1.tgz
     version: 1.0.1
-generated: "2024-01-12T10:51:30.205798707Z"
+generated: "2024-01-12T12:32:27.145131931Z"
