@@ -3,6 +3,19 @@ entries:
   kube-prometheus-dashboards-original:
   - apiVersion: v2
     appVersion: 55.5.0
+    created: "2024-01-12T10:51:29.978773847Z"
+    description: Flexible helm install of kube-prometheus-stack dashboards
+    digest: 2af2d9c820f20a380f6c1fd7029760223f25ef4683d31be56d27478904e8c129
+    maintainers:
+    - email: stian.ovrevage@signicat.com
+      name: StianOvrevage
+    name: kube-prometheus-dashboards-original
+    type: application
+    urls:
+    - https://github.com/signicat/kube-prometheus-dashboards/releases/download/kube-prometheus-dashboards-original-1.0.2/kube-prometheus-dashboards-original-1.0.2.tgz
+    version: 1.0.2
+  - apiVersion: v2
+    appVersion: 55.5.0
     created: "2024-01-12T10:14:05.807029198Z"
     description: Flexible helm install of kube-prometheus-stack dashboards
     digest: 072f464a99ba7e0ba95f9a6ad5f85885cd4751008f1edc9e778b43eb91c53612
@@ -14,6 +27,20 @@ entries:
   kube-prometheus-dashboards-original-v2:
   - apiVersion: v2
     appVersion: 55.5.0
+    created: "2024-01-12T10:51:30.205756006Z"
+    description: Flexible helm install of kube-prometheus-stack dashboards with a
+      few improvements
+    digest: ae1ce45a5f14642972c3ade147941737d44b389eac86ae5f9a53132966b646eb
+    maintainers:
+    - email: stian.ovrevage@signicat.com
+      name: StianOvrevage
+    name: kube-prometheus-dashboards-original-v2
+    type: application
+    urls:
+    - https://github.com/signicat/kube-prometheus-dashboards/releases/download/kube-prometheus-dashboards-original-v2-1.0.2/kube-prometheus-dashboards-original-v2-1.0.2.tgz
+    version: 1.0.2
+  - apiVersion: v2
+    appVersion: 55.5.0
     created: "2024-01-12T10:14:06.058221194Z"
     description: Flexible helm install of kube-prometheus-stack dashboards with a
       few improvements
@@ -23,4 +50,4 @@ entries:
     urls:
     - https://github.com/signicat/kube-prometheus-dashboards/releases/download/kube-prometheus-dashboards-original-v2-1.0.1/kube-prometheus-dashboards-original-v2-1.0.1.tgz
     version: 1.0.1
-generated: "2024-01-12T10:14:06.058235894Z"
+generated: "2024-01-12T10:51:30.205798707Z"
