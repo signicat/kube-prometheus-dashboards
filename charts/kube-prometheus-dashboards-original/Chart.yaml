@@ -4,10 +4,10 @@ description: Flexible helm install of kube-prometheus-stack dashboards
 
 type: application
 
-version: 1.0.1
+version: 1.0.2
 
 maintainers:
-  - name: Stian Øvrevåge
+  - name: StianOvrevage
     email: stian.ovrevage@signicat.com
 
 appVersion: "55.5.0"
