@@ -1,7 +1,9 @@
 name: Lint & Test Helm Charts
 
 on:
-  push
+  push:
+    branches-ignore:
+      - main
 
 jobs:
   lint-test:
