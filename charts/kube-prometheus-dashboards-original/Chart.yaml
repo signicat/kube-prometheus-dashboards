@@ -1,0 +1,13 @@
+apiVersion: v2
+name: kube-prometheus-dashboards-original
+description: Flexible helm install of kube-prometheus-stack dashboards
+
+type: application
+
+version: 1.0.3
+
+maintainers:
+  - name: StianOvrevage
+    email: stian.ovrevage@signicat.com
+
+appVersion: "55.5.0"
