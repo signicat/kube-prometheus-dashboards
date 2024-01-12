@@ -12,9 +12,9 @@ Change your `kube-prometheus-stack` values.yaml to disable installation of defau
         defaultDashboardsEnabled: false
 
     # Add helm repository
-    helm repo add .....
+    helm repo add kube-prometheus-dashboards https://signicat.github.io/kube-prometheus-dashboards
     # Install dashboards into `monitoring` namespace, using the same config as for `kube-prometheus-stack`, but with dashboards enabled:
-    helm upgrade --install kube-prom-dash --namespace monitoring charts/kube-prometheus-dashboards-original-v2 --values my-kube-prometheus-stack-values.yaml --set grafana.defaultDashboardsEnabled=true
+    helm upgrade --install kube-prom-dash --namespace monitoring kube-prometheus-dashboards/kube-prometheus-dashboards-original-v2 --values my-kube-prometheus-stack-values.yaml --set grafana.defaultDashboardsEnabled=true
     
     # Optionally restart grafana if automatic dashboard reload doesn't work
     kubectl rollout restart -n monitoring deployment/grafana
