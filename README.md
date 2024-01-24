@@ -63,7 +63,7 @@ Additionally, some dashboards have been renamed for brevity, allowing more of th
 
 - Control the creation of individual dashboards using `grafana.defaultDashboardsDisabled.x`.
 
-# Detailed Usage and Vaveats
+# Detailed Usage and Caveats
 
 Installation of these dashboards requires the `grafana.sidecar.dashboards` configuration to be enabled and properly set up.
 

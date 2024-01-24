@@ -466,7 +466,7 @@ data:
               "decimals": 2,
               "link": true,
               "linkTooltip": "Drill down",
-              "linkUrl": "d/7a18067ce943a40ae25454675c19ff5c/kubernetes-networking-pod?orgId=1&refresh=30s&var-namespace=$namespace&var-pod=$__cell",
+              "linkUrl": "d/7a18067ce943a40ae25454675c19ff5c-v2/k8s-net-pod?orgId=1&refresh=30s&var-namespace=$namespace&var-pod=$__cell",
               "pattern": "pod",
               "thresholds": [],
               "type": "number",
