@@ -452,7 +452,7 @@ data:
               "decimals": 2,
               "link": true,
               "linkTooltip": "Drill down",
-              "linkUrl": "d/728bf77cc1166d2f3133bf25846876cc/kubernetes-networking-workload?orgId=1&refresh=30s&var-namespace=$namespace&var-type=$type&var-workload=$__cell",
+              "linkUrl": "d/728bf77cc1166d2f3133bf25846876cc-v2/k8s-net-workload?orgId=1&refresh=30s&var-namespace=$namespace&var-type=$type&var-workload=$__cell",
               "pattern": "workload",
               "thresholds": [],
               "type": "number",
