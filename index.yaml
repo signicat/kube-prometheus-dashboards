@@ -40,6 +40,20 @@ entries:
   kube-prometheus-dashboards-original-v2:
   - apiVersion: v2
     appVersion: 55.5.0
+    created: "2024-01-24T15:03:44.483153839Z"
+    description: Flexible helm install of kube-prometheus-stack dashboards with a
+      few improvements
+    digest: 47f42079ce4f1be1131e8eb4f95126201850a0241322fe949e328816d6d14887
+    maintainers:
+    - email: stian.ovrevage@signicat.com
+      name: StianOvrevage
+    name: kube-prometheus-dashboards-original-v2
+    type: application
+    urls:
+    - https://github.com/signicat/kube-prometheus-dashboards/releases/download/kube-prometheus-dashboards-original-v2-1.0.4/kube-prometheus-dashboards-original-v2-1.0.4.tgz
+    version: 1.0.4
+  - apiVersion: v2
+    appVersion: 55.5.0
     created: "2024-01-12T12:32:27.145115831Z"
     description: Flexible helm install of kube-prometheus-stack dashboards with a
       few improvements
@@ -77,4 +91,4 @@ entries:
     urls:
     - https://github.com/signicat/kube-prometheus-dashboards/releases/download/kube-prometheus-dashboards-original-v2-1.0.1/kube-prometheus-dashboards-original-v2-1.0.1.tgz
     version: 1.0.1
-generated: "2024-01-12T12:32:27.145131931Z"
+generated: "2024-01-24T15:03:44.48317051Z"
